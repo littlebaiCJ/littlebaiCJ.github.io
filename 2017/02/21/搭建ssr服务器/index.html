@@ -15,16 +15,16 @@
     <meta name="keywords" content="forsigner,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
   
 
-  <meta name="description" content="如果没有国外vps的需要先购买：https://virmach.com/manage/clientarea.php?action=services购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)接下来就是ssr的搭建：1.首先安装更新apt-get update2.安装gitapt-get install git3.">
+  <meta name="description" content="如果没有国外vps的需要先购买：https://virmach.com/manage/clientarea.php?action=services购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)接下来就是ssr的搭建：1.首先安装更新apt-get update2.安装gitapt-get install git3.获取源代码git clone -b ma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建ssr服务器">
 <meta property="og:url" content="https://littlebaicj.github.io/2017/02/21/搭建ssr服务器/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="如果没有国外vps的需要先购买：https://virmach.com/manage/clientarea.php?action=services购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)接下来就是ssr的搭建：1.首先安装更新apt-get update2.安装gitapt-get install git3.">
-<meta property="og:updated_time" content="2017-02-24T02:02:29.837Z">
+<meta property="og:description" content="如果没有国外vps的需要先购买：https://virmach.com/manage/clientarea.php?action=services购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)接下来就是ssr的搭建：1.首先安装更新apt-get update2.安装gitapt-get install git3.获取源代码git clone -b ma">
+<meta property="og:updated_time" content="2017-02-24T09:24:12.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建ssr服务器">
-<meta name="twitter:description" content="如果没有国外vps的需要先购买：https://virmach.com/manage/clientarea.php?action=services购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)接下来就是ssr的搭建：1.首先安装更新apt-get update2.安装gitapt-get install git3.">
+<meta name="twitter:description" content="如果没有国外vps的需要先购买：https://virmach.com/manage/clientarea.php?action=services购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)接下来就是ssr的搭建：1.首先安装更新apt-get update2.安装gitapt-get install git3.获取源代码git clone -b ma">
 
   
 
@@ -226,7 +226,19 @@
 
   <div class="article-content">
     
-      <p>如果没有国外vps的需要先购买：<a href="https://virmach.com/manage/clientarea.php?action=services" target="_blank" rel="external">https://virmach.com/manage/clientarea.php?action=services</a><br>购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)<br>接下来就是ssr的搭建：<br>1.首先安装更新<br>apt-get update<br>2.安装git<br>apt-get install git<br>3.</p>
+      <p>如果没有国外vps的需要先购买：<a href="https://virmach.com/manage/clientarea.php?action=services" target="_blank" rel="external">https://virmach.com/manage/clientarea.php?action=services</a><br>购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)<br>接下来就是ssr的搭建：<br>1.首先安装更新<br>apt-get update<br>2.安装git<br>apt-get install git<br>3.获取源代码<br>git clone -b manyuser <a href="https://github.com/shadowsocksr/shadowsocksr.git" target="_blank" rel="external">https://github.com/shadowsocksr/shadowsocksr.git</a><br>4.在服务端配置<br>cd ~/shadowsocksr<br>bash initcfg.sh<br>进入子目录<br>cd ~/shadowsocksr/shadowsocks</p>
+<p>接下来运行的方法有两种，一种是快速运行，一种是配置文件运行（推荐）<br>1）.快速运行<br>python server.py -p 443 -k password -m aes-256-cfb -O auth_sha1_v4 -o http_simple<br>在這里可能会发现一个问题,出现python：command not found<br>解决该命令方法:执行安装python模块命令<br>apt-get install -y python-pip</p>
+<p>继续，如果要后台运行<br>python server.py -p 443 -k password -m aes-256-cfb -O auth_sha1_v4 -o http_simple -d start</p>
+<p>查看日志<br>tail -f /var/log/shadowsocks.log</p>
+<p>如果要停止/重启：<br>python server.py -d stop/restart</p>
+<p>使用配置文件运行</p>
+<p>如果你的ss目录是~/shadowsocksr，进入这里<br>修改user-config.json中的server_port，password等字段，具体可参见：<br><a href="https://github.com/breakwa11/shadowsocks-rss/wiki/config.json" target="_blank" rel="external">https://github.com/breakwa11/shadowsocks-rss/wiki/config.json</a></p>
+<p>运行子目录内的server.py：<br>python server.py</p>
+<p>如果要在后台运行：<br>python server.py -d start</p>
+<p>如果要停止/重启：<br>python server.py -d stop/restart</p>
+<p>查看日志：<br>tail -f /var/log/shadowsocks.log</p>
+<p>如果配置好文件后出现: common.py:236 unsupported addrtype 69, maybe wrong password or encryption method 后面balabala一大堆的错误<br>更改user-config.json里面的”protocol”: “auth_sha1_compatible”及”obfs”: “http_simple_compatible”</p>
+<p>配置开机自启动<br><a href="https://github.com/breakwa11/shadowsocks-rss/wiki/System-startup-script" target="_blank" rel="external">https://github.com/breakwa11/shadowsocks-rss/wiki/System-startup-script</a><br>配置开机自启动的时候，或许你又会出现一个错误,在执行service shadowsocks start的时候，显示shadowsocks： No such file or directory 的错误<br>运行cat -v /etc/init.d/shadowcocks进行诊断，你会发现每个换行后面都出现^M,这就是罪魁祸首<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">解决方法:</div><div class="line">sed -i -e&apos;/ \ r // g&apos;/etc/init.d/shadowsocks 运行该命令即可解决</div><div class="line"></div><div class="line">到这里一个ssr的服务器环境就搭建完成啦~</div></pre></td></tr></table></figure></p>
 
     
   </div>
@@ -282,7 +294,7 @@
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
+      <span id="close" class="btn-close">Close</span>
     </div>
     <hr>
     <div class="modal-body">
