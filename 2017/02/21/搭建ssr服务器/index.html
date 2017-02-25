@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="如果没有国外vps的需要先购买：https://virmach.com/manage/clientarea.php?action=services购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)
 接下来就是ssr的搭建：1.首先安装更新apt-get update2.安装gitapt-get install git3.获取源代码git clone -b m">
-<meta property="og:image" content="https://littlebaicj.github.io/2017/02/21/搭建ssr服务器/">
+<meta property="og:image" content="https://littlebaicj.github.io/./secureCrt.png">
 <meta property="og:updated_time" content="2017-02-25T03:03:51.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建ssr服务器配置环境">
 <meta name="twitter:description" content="如果没有国外vps的需要先购买：https://virmach.com/manage/clientarea.php?action=services购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)
 接下来就是ssr的搭建：1.首先安装更新apt-get update2.安装gitapt-get install git3.获取源代码git clone -b m">
-<meta name="twitter:image" content="https://littlebaicj.github.io/2017/02/21/搭建ssr服务器/">
+<meta name="twitter:image" content="https://littlebaicj.github.io/./secureCrt.png">
 
   
 
@@ -231,7 +231,7 @@
 
   <div class="article-content">
     
-      <p>如果没有国外vps的需要先购买：<a href="https://virmach.com/manage/clientarea.php?action=services" target="_blank" rel="external">https://virmach.com/manage/clientarea.php?action=services</a><br>购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)<br><img src="/2017/02/21/搭建ssr服务器/" alt="SecureCRT"></p>
+      <p>如果没有国外vps的需要先购买：<a href="https://virmach.com/manage/clientarea.php?action=services" target="_blank" rel="external">https://virmach.com/manage/clientarea.php?action=services</a><br>购买完vps账号后，利用SecureCRT软件连接服务器(推荐服务器系统:debian7)<br><img src="./secureCrt.png" alt="SecureCRT"></p>
 <p>接下来就是ssr的搭建：<br>1.首先安装更新<br>apt-get update<br>2.安装git<br>apt-get install git<br>3.获取源代码<br>git clone -b manyuser <a href="https://github.com/shadowsocksr/shadowsocksr.git" target="_blank" rel="external">https://github.com/shadowsocksr/shadowsocksr.git</a><br>4.在服务端配置<br>cd ~/shadowsocksr<br>bash initcfg.sh<br>进入子目录<br>cd ~/shadowsocksr/shadowsocks</p>
 <p>接下来运行的方法有两种，一种是快速运行，一种是配置文件运行（推荐）<br>1）.快速运行<br>python server.py -p 443 -k password -m aes-256-cfb -O auth_sha1_v4 -o http_simple<br>在這里可能会发现一个问题,出现python：command not found<br>解决该命令方法:执行安装python模块命令<br>apt-get install -y python-pip</p>
 <p>继续，如果要后台运行<br>python server.py -p 443 -k password -m aes-256-cfb -O auth_sha1_v4 -o http_simple -d start</p>
